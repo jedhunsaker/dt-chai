@@ -7,4 +7,4 @@ TypeScript Definitions for Node from DefinitelyTyped
 Installation
 ------------
 
-    bower install https://github.com/jedhunsaker/dt-chai.git --save-dev
+    bower install dt-chai --save-dev
