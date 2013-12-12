@@ -8,11 +8,32 @@ declare module chai {
 
     function expect(target: any): Expect;
 
+    // Provides a way to extend the internals of Chai
+    function use(fn: (chai: any, utils: any) => void);
+
     interface ExpectStatic {
         (target: any): Expect;
     }
 
-    interface Expect extends LanguageChains, NumericComparison, TypeComparison {
+    interface Assertions {
+        attr(name, value?);
+        css(name, value?);
+        data(name, value?);
+        class(className);
+        id(id);
+        html(html);
+        text(text);
+        value(value);
+        visible;
+        hidden;
+        selected;
+        checked;
+        disabled;
+        empty;
+        exist;
+    }
+
+    interface Expect extends LanguageChains, NumericComparison, TypeComparison, Assertions {
         not: Expect;
         deep: Deep;
         a: TypeComparison;
@@ -125,11 +146,11 @@ declare module chai {
 
     interface Keys {
         (...keys: string[]): Expect;
-        (keys: Array): Expect;
+        (keys: any[]): Expect;
     }
 
     interface Members {
-        (set: Array, message?: string): Expect;
+        (set: any[], message?: string): Expect;
     }
 
     interface Throw {
